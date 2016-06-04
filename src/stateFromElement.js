@@ -279,8 +279,14 @@ class BlockGenerator {
     if (element.childNodes != null) {
       Array.from(element.childNodes).forEach(this.processNode, this);
     }
-    if (SELF_CLOSING_ELEMENTS.hasOwnProperty(tagName)) {
-      this.processText('~');
+    // if (SELF_CLOSING_ELEMENTS.hasOwnProperty(tagName)) {
+    //   this.processText('~');
+    // }
+    
+    // patch
+    if (tagName === 'img') {
+      var element_str = '<' + tagName + ' src=\"' + element.getAttribute('src') + '\" />'
+      this.processText(element_str);
     }
     block.entityStack.pop();
     block.styleStack.pop();
