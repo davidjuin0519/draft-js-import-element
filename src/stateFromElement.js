@@ -285,7 +285,7 @@ class BlockGenerator {
     
     // patch
     if (tagName === 'img') {
-      var element_str = '<' + tagName + ' src=\"' + element.getAttribute('src') + '\" />'
+      var element_str = '<' + tagName + ' src=\"' + element.getAttribute('src') + '\" style=\"' + element.getAttribute('style') + '\" />'
       this.processText(element_str);
     }
     block.entityStack.pop();
